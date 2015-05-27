@@ -1,22 +1,78 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using HtmlAgilityPack;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using Microsoft.Azure.WebJobs;
+using Microsoft.WindowsAzure.Storage.Table;
+using System.Text.RegularExpressions;
 
 namespace WebJob
 {
     public class Functions
     {
-        // This function will be triggered based on the schedule you have set for this WebJob
-        // This function will enqueue a message on an Azure Queue called queue
         [NoAutomaticTrigger]
-        public static void ManualTrigger(TextWriter log, int value, [Queue("queue")] out string message)
+        public static void ScrapeAndStoreWOD([Table("WOD")] ICollector<SimpleWODObject> tableBinding)
         {
-            log.WriteLine("Function is invoked with value={0}", value);
-            message = value.ToString();
-            log.WriteLine("Following message will be written on the Queue={0}", message);
+            SimpleWODObject wod = Functions.Scape();
+
+            // TODO: have Store method live up to its name; the Add method call should reside in it.
+            Functions.Store(wod);
+            tableBinding.Add(wod);
+        }
+
+        static public SimpleWODObject Scape()
+        {
+            string Url = "http://www.crossfitorlando.com/category/wod/#/today";
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument document = web.Load(Url);
+            IEnumerable<HtmlNode> articles = document.DocumentNode.SelectNodes("//article");
+
+            var list = Functions.GetSimpleList(articles);
+
+            return list[0];
+        }
+
+        static public SimpleWODObject Store(SimpleWODObject wod)
+        {
+            string date = Regex.Match(wod.Title, @"\d+[-.\/]\d+[-.\/]\d+", RegexOptions.None).Value;
+            DateTime dt = Convert.ToDateTime(date);
+
+            wod.PartitionKey = "year_" + dt.Year.ToString();
+            wod.RowKey = "day_" + dt.DayOfYear.ToString();
+
+            //tableBinding.Add(wod);
+            return wod;
+        }
+
+        static public List<SimpleWODObject> GetSimpleList(IEnumerable<HtmlNode> articles)
+        {
+            var list = new List<SimpleWODObject>();
+            
+            foreach(HtmlNode article in articles)
+            {   
+                SimpleWODObject obj = new SimpleWODObject() {
+                   Title = article.SelectSingleNode("//h2/a").InnerText,
+                   Body = Functions.FormatBody(article.SelectSingleNode("//article//div[2]").InnerText)
+                };
+
+                list.Add(obj);
+            }
+
+            return list;
+        }
+
+        static public string FormatBody(string body)
+        {
+            // remove the expected 3 tabs in the begining of the string and replace the Part 1 and Part 2 of the WOD with additional new lines...
+            return body.Replace("\n\t\t\t", "").Replace("\nPart ", "\n\nPart ");
         }
     }
+}
+
+public class SimpleWODObject : TableEntity
+{
+    public string Title { get; set; }
+
+    public string Body { get; set; }
 }

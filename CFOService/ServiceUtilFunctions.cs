@@ -8,6 +8,18 @@ namespace CFOService
 {
     public class ServiceUtilFunctions
     {
+        public SimpleWODObject GetWOD()
+        {
+            string Url = "http://www.crossfitorlando.com/category/wod/#/today";
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument document = web.Load(Url);
+            IEnumerable<HtmlNode> articles = document.DocumentNode.SelectNodes("//article");
+
+            var list = ServiceUtilFunctions.GetSimpleList(articles);
+
+            return list[0];
+        }
+
         static public List<SimpleWODObject> GetSimpleList(IEnumerable<HtmlNode> articles)
         {
             var list = new List<SimpleWODObject>();
