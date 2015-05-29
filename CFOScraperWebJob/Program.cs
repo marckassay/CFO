@@ -17,6 +17,8 @@ namespace WebJob
             var host = new JobHost();
             // The following code will invoke a function called ManualTrigger and 
             // pass in data (value in this case) to the function
+
+            // TODO: consider System.InvalidOperationException when entity already exists.
             host.Call(typeof(Functions).GetMethod("ScrapeAndStoreWOD"));
         }
     }

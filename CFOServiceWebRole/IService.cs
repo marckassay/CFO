@@ -6,12 +6,12 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace CFOService
+namespace CFOServiceWebRole
 {
     [ServiceContract]
     public interface IService
     {
         [OperationContract]
-        SimpleWODObject GetWOD();
+        string GetWOD();
     }
 }

@@ -12,16 +12,16 @@ namespace WebJob
     public class Functions
     {
         [NoAutomaticTrigger]
-        public static void ScrapeAndStoreWOD([Table("WOD")] ICollector<SimpleWODObject> tableBinding)
+        public static void ScrapeAndStoreWOD([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            SimpleWODObject wod = Functions.Scape();
+            WOD wod = Functions.Scape();
 
             // TODO: have Store method live up to its name; the Add method call should reside in it.
             Functions.Store(wod);
             tableBinding.Add(wod);
         }
 
-        static public SimpleWODObject Scape()
+        static public WOD Scape()
         {
             string Url = "http://www.crossfitorlando.com/category/wod/#/today";
             HtmlWeb web = new HtmlWeb();
@@ -33,7 +33,7 @@ namespace WebJob
             return list[0];
         }
 
-        static public SimpleWODObject Store(SimpleWODObject wod)
+        static public WOD Store(WOD wod)
         {
             string date = Regex.Match(wod.Title, @"\d+[-.\/]\d+[-.\/]\d+", RegexOptions.None).Value;
             DateTime dt = Convert.ToDateTime(date);
@@ -45,13 +45,13 @@ namespace WebJob
             return wod;
         }
 
-        static public List<SimpleWODObject> GetSimpleList(IEnumerable<HtmlNode> articles)
+        static public List<WOD> GetSimpleList(IEnumerable<HtmlNode> articles)
         {
-            var list = new List<SimpleWODObject>();
+            var list = new List<WOD>();
             
             foreach(HtmlNode article in articles)
             {   
-                SimpleWODObject obj = new SimpleWODObject() {
+                WOD obj = new WOD() {
                    Title = article.SelectSingleNode("//h2/a").InnerText,
                    Body = Functions.FormatBody(article.SelectSingleNode("//article//div[2]").InnerText)
                 };
@@ -68,11 +68,4 @@ namespace WebJob
             return body.Replace("\n\t\t\t", "").Replace("\nPart ", "\n\nPart ");
         }
     }
-}
-
-public class SimpleWODObject : TableEntity
-{
-    public string Title { get; set; }
-
-    public string Body { get; set; }
 }

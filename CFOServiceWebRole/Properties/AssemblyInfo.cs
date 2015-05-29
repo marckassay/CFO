@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CFOService")]
+[assembly: AssemblyTitle("CFOServiceWebRole")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CFOService")]
+[assembly: AssemblyProduct("CFOServiceWebRole")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8a76e000-0eb5-4a5b-9b93-496e11c5166c")]
+[assembly: Guid("003049a1-5ae6-4610-a156-c8e115a78857")]
 
 // Version information for an assembly consists of the following four values:
 //
