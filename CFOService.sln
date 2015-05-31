@@ -11,6 +11,10 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CFOCloudService", "CFOCloud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFOServiceWebRole", "CFOServiceWebRole\CFOServiceWebRole.csproj", "{D376CE8F-48AB-492D-84C5-EECB32353A8D}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "CloudService", "CloudService\CloudService.ccproj", "{EDDB0E46-E7E5-454A-AED9-94EBBF14ACB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWebRole", "ServiceWebRole\ServiceWebRole.csproj", "{83DCBF23-8C05-456B-A637-A451BC5F44C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{D376CE8F-48AB-492D-84C5-EECB32353A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D376CE8F-48AB-492D-84C5-EECB32353A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D376CE8F-48AB-492D-84C5-EECB32353A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDDB0E46-E7E5-454A-AED9-94EBBF14ACB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDDB0E46-E7E5-454A-AED9-94EBBF14ACB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDDB0E46-E7E5-454A-AED9-94EBBF14ACB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDDB0E46-E7E5-454A-AED9-94EBBF14ACB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DCBF23-8C05-456B-A637-A451BC5F44C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DCBF23-8C05-456B-A637-A451BC5F44C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DCBF23-8C05-456B-A637-A451BC5F44C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DCBF23-8C05-456B-A637-A451BC5F44C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
