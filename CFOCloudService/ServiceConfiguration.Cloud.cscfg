@@ -3,8 +3,9 @@
   <Role name="CFOServiceWebRole">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="cfo" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=LzdAP35jU2LOxFX8nDCpPObGYevXdjt4sLpplKPKbsapgwkN8+dFGnS75KSrkgjL/6m38U+qAE9oZsFoiR1xQA==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=LzdAP35jU2LOxFX8nDCpPObGYevXdjt4sLpplKPKbsapgwkN8+dFGnS75KSrkgjL/6m38U+qAE9oZsFoiR1xQA==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

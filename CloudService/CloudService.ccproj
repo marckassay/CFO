@@ -5,14 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.6</ProductVersion>
-    <ProjectGuid>f35bd314-b6f4-48c7-b5a9-6e5035803259</ProjectGuid>
+    <ProjectGuid>eddb0e46-e7e5-454a-aed9-94ebbf14acb6</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CFOCloudService</RootNamespace>
-    <AssemblyName>CFOCloudService</AssemblyName>
+    <RootNamespace>CloudService</RootNamespace>
+    <AssemblyName>CloudService</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
-    <Name>CFOCloudService</Name>
-    <UseWebProjectPorts>False</UseWebProjectPorts>
+    <Name>CloudService</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,28 +35,6 @@
     <ServiceDefinition Include="ServiceDefinition.csdef" />
     <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CFOServiceWebRole\CFOServiceWebRole.csproj">
-      <Name>CFOServiceWebRole</Name>
-      <Project>{d376ce8f-48ab-492d-84c5-eecb32353a8d}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>CFOServiceWebRole</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CFOServiceContent\" />
-    <Folder Include="CFOServiceWebRoleContent\" />
-    <Folder Include="Profiles" />
-  </ItemGroup>
-  <ItemGroup>
-    <DiagnosticsConfiguration Include="CFOServiceContent\diagnostics.wadcfgx" />
-    <DiagnosticsConfiguration Include="CFOServiceWebRoleContent\diagnostics.wadcfgx" />
-  </ItemGroup>
-  <ItemGroup>
-    <PublishProfile Include="Profiles\cfoProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

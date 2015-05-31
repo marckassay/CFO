@@ -20,7 +20,7 @@ namespace CFOServiceWebRole
         {
             // Retrieve the storage account from the connection string.
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+                CloudConfigurationManager.GetSetting("cfo"));
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();

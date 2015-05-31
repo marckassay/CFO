@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ServiceDefinition name="CFOCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
-  <WebRole name="CFOServiceWebRole" vmsize="Small">
+<ServiceDefinition name="CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WebRole name="ServiceWebRole" vmsize="Small">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -9,12 +9,10 @@
       </Site>
     </Sites>
     <ConfigurationSettings>
-      <Setting name="StorageConnectionString" />
-      <Setting name="cfo" />
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
     </ConfigurationSettings>
     <Endpoints>
-      <InputEndpoint name="Endpoint1" protocol="http" port="8080" />
+      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
   </WebRole>
 </ServiceDefinition>
