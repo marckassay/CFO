@@ -5,6 +5,7 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=LzdAP35jU2LOxFX8nDCpPObGYevXdjt4sLpplKPKbsapgwkN8+dFGnS75KSrkgjL/6m38U+qAE9oZsFoiR1xQA==" />
       <Setting name="cfo" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=LzdAP35jU2LOxFX8nDCpPObGYevXdjt4sLpplKPKbsapgwkN8+dFGnS75KSrkgjL/6m38U+qAE9oZsFoiR1xQA==" />
+      <Setting name="local" value="UseDevelopmentStorage=true" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

@@ -14,11 +14,10 @@ namespace ServiceWebRole
 {
     public class Service1 : IService1
     {
-        public string GetWOD()
+        public WOD GetWOD()
         {
             // Retrieve the storage account from the connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("cfo"));
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("cfo"));
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -32,10 +31,14 @@ namespace ServiceWebRole
             // Print the fields for each customer.
             foreach (WOD entity in table.ExecuteQuery(query))
             {
-                return entity.Title + " " + entity.Body;
+                return entity;
             }
 
-            return "nil";
+            return new WOD()
+            {
+                Title = "na",
+                Body = "na"
+            };
         }
     }
 }

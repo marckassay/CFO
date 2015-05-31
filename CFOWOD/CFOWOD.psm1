@@ -11,13 +11,13 @@ function Get-WOD
     }
 
     process {
-        $proxy = New-WebServiceProxy -Uri http://localhost:54267/Service.svc?wsdl
+        $proxy = New-WebServiceProxy -Uri http://cfo.cloudapp.net/Service1.svc?wsdl
         
         $response = $proxy.GetWOD()
 
-        Write-Host $response.title
+        Write-Host $response.Title
         Write-Host "----------------"
-        Write-Host $response.body
+        Write-Host $response.Body
     }
 
     end {
