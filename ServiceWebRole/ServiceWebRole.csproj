@@ -118,9 +118,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CFOScraperWebJob\CFOScraperWebJob.csproj">
+    <ProjectReference Include="..\ScraperWebJob\ScraperWebJob.csproj">
       <Project>{07c2b61c-6c1f-4b8c-b7b2-63ee818d8af5}</Project>
-      <Name>CFOScraperWebJob</Name>
+      <Name>ScraperWebJob</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
