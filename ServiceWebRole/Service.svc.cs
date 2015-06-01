@@ -12,7 +12,7 @@ using WebJob;
 
 namespace ServiceWebRole
 {
-    public class Service1 : IService1
+    public class Service : IService
     {
         public WOD GetWOD()
         {

@@ -5,13 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WebJob;
 
 namespace ServiceWebRole
 {
     [ServiceContract]
-    public interface IService1
+    public interface IService
     {
         [OperationContract]
-        string GetWOD();
+        WOD GetWOD();
     }
 }

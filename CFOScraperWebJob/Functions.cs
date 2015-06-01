@@ -64,6 +64,10 @@ namespace WebJob
 
         static public string FormatBody(string body)
         {
+            // one-offs format fixes...
+            body.Replace("&#8230;", "...");
+            body.Replace("&nbsp;", " ");
+
             // remove the expected 3 tabs in the begining of the string and replace the Part 1 and Part 2 of the WOD with additional new lines...
             return body.Replace("\n\t\t\t", "").Replace("\nPart ", "\n\nPart ");
         }
