@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="ServiceWebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=" />
+      <Setting name="cfo" value="DefaultEndpointsProtocol=https;AccountName=cfo;AccountKey=H9c6RFG3fcEU/oOpkQmtHeFdoYIV19/SyNZaLlDjCx4V4mtSt/897PSvJFceFLF+oExAx26fjjDGyrFYrGrLzw==" />
+      <Setting name="local" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
