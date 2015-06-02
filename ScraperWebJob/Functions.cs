@@ -26,11 +26,9 @@ namespace WebJob
             string Url = "http://www.crossfitorlando.com/category/wod/#/today";
             HtmlWeb web = new HtmlWeb();
             HtmlDocument document = web.Load(Url);
-            IEnumerable<HtmlNode> articles = document.DocumentNode.SelectNodes("//article");
+            HtmlNode article = document.DocumentNode.SelectNodes("//article").First();
 
-            var list = Functions.GetSimpleList(articles);
-
-            return list[0];
+            return ConvertHTMLToObject(article);
         }
 
         static public WOD Store(WOD wod)
@@ -45,21 +43,14 @@ namespace WebJob
             return wod;
         }
 
-        static public List<WOD> GetSimpleList(IEnumerable<HtmlNode> articles)
+        static public WOD ConvertHTMLToObject(HtmlNode article)
         {
-            var list = new List<WOD>();
-            
-            foreach(HtmlNode article in articles)
-            {   
-                WOD obj = new WOD() {
-                   Title = article.SelectSingleNode("//h2/a").InnerText,
-                   Body = Functions.FormatBody(article.SelectSingleNode("//article//div[2]").InnerText)
-                };
+            WOD obj = new WOD() {
+                Title = article.SelectSingleNode("//h2/a").InnerText,
+                Body = article.SelectSingleNode("//article//div[2]").InnerText
+            };
 
-                list.Add(obj);
-            }
-
-            return list;
+            return obj;
         }
 
         static public string FormatBody(string body)
