@@ -18,14 +18,13 @@ namespace WebJob
         {
             WOD wod = Functions.Scape();
 
-            // TODO: have Store method live up to its name; the Add method call should reside in it.
-            Functions.Store(wod);
-            tableBinding.Add(wod);
+            Functions.Store(tableBinding, wod);
         }
 
         static public WOD Scape()
         {
             string Url = "http://www.crossfitorlando.com/category/wod/#/today";
+
             HtmlWeb web = new HtmlWeb();
             HtmlDocument document = web.Load(Url);
             HtmlNode article = document.DocumentNode.SelectNodes("//article").First();
@@ -33,7 +32,7 @@ namespace WebJob
             return ConvertHTMLToObject(article);
         }
 
-        static public WOD Store(WOD wod)
+        static public void Store(ICollector<WOD> tableBinding, WOD wod)
         {
             string date = Regex.Match(wod.Title, @"\d+[-.\/]\d+[-.\/]\d+", RegexOptions.None).Value;
             DateTime dt = Convert.ToDateTime(date);
@@ -41,8 +40,7 @@ namespace WebJob
             wod.PartitionKey = "year_" + dt.Year.ToString();
             wod.RowKey = "day_" + dt.DayOfYear.ToString();
 
-            //tableBinding.Add(wod);
-            return wod;
+            tableBinding.Add(wod);
         }
 
         static public WOD ConvertHTMLToObject(HtmlNode article)
