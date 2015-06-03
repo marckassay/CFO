@@ -22,23 +22,13 @@ namespace ServiceWebRole
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-            // Create the CloudTable object that represents the "people" table.
+            // Create the CloudTable object that represents the "WOD" table.
             CloudTable table = tableClient.GetTableReference("WOD");
 
-            // Construct the query operation for all customer entities where PartitionKey="Smith".
+            // Construct the query operation for all WOD entities where PartitionKey="year_2015".
             TableQuery<WOD> query = new TableQuery<WOD>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "year_2015"));
 
-            // Print the fields for each customer.
-            foreach (WOD entity in table.ExecuteQuery(query))
-            {
-                return entity;
-            }
-
-            return new WOD()
-            {
-                Title = "na",
-                Body = "na"
-            };
+            return table.ExecuteQuery(query).Last<WOD>();
         }
     }
 }
