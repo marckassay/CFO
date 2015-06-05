@@ -17,7 +17,12 @@ namespace WebJob
 
             try
             {
-                host.Call(typeof(Functions).GetMethod("ScrapeAndStoreWOD"));
+                // a flag to indicate what Scrape and Store method to use.  This is used to initially populate the table...
+                bool unoentity = true;
+                
+                string method = (unoentity) ? "ScrapeAndStoreWOD" : "ScrapeAndStoreWODs";
+
+                host.Call(typeof(Functions).GetMethod(method));
             }
             catch (InvalidOperationException error)
             {

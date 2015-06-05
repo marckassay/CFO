@@ -8,6 +8,7 @@ using System.Web;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace WebJob
 {
@@ -16,20 +17,33 @@ namespace WebJob
         [NoAutomaticTrigger]
         public static void ScrapeAndStoreWOD([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            WOD wod = Functions.Scape();
+            WOD wod = ConvertArticleToObject(Scape("http://www.crossfitorlando.com/category/wod/#/today").First());
 
             Functions.Store(tableBinding, wod);
         }
 
-        static public WOD Scape()
+        [NoAutomaticTrigger]
+        public static void ScrapeAndStoreWODs([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            string Url = "http://www.crossfitorlando.com/category/wod/#/today";
+            for (int i = 1; i < 3; i++)
+            {
+                string url = String.Format("http://www.crossfitorlando.com/category/wod/page/{0}/#/today", i.ToString());
+                List<WOD> wods = ConvertArticlesToObjects(Scape(url));
 
+                wods.ForEach(delegate(WOD wod)
+                {
+                    Functions.Store(tableBinding, wod);
+                });
+            }
+        }
+
+        static public IEnumerable<HtmlNode> Scape(string url)
+        {
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument document = web.Load(Url);
-            HtmlNode article = document.DocumentNode.SelectNodes("//article").First();
 
-            return ConvertHTMLToObject(article);
+            HtmlDocument document = web.Load(url);
+
+            return document.DocumentNode.SelectNodes("//article");
         }
 
         static public void Store(ICollector<WOD> tableBinding, WOD wod)
@@ -43,14 +57,26 @@ namespace WebJob
             tableBinding.Add(wod);
         }
 
-        static public WOD ConvertHTMLToObject(HtmlNode article)
+        static public WOD ConvertArticleToObject(HtmlNode article)
         {
             WOD obj = new WOD() {
-                Title = article.SelectSingleNode("//h2/a").InnerText,
-                Body = FormatBody(article.SelectSingleNode("//article//div[2]").InnerText)
+                Title = article.SelectSingleNode(".//h2[@class='post-title']/a").InnerText,
+                Body = FormatBody(article.SelectSingleNode(".//div[@class='entry clearfix']").InnerText)
             };
 
             return obj;
+        }
+
+        static public List<WOD> ConvertArticlesToObjects(IEnumerable<HtmlNode> nodes)
+        {
+            var list = new List<WOD>();
+
+            foreach (HtmlNode node in nodes)
+            {
+                list.Add(ConvertArticleToObject(node));
+            }
+
+            return list;
         }
 
         static public string FormatBody(string body)
