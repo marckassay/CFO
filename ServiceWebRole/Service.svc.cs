@@ -42,7 +42,7 @@ namespace ServiceWebRole
                 // split DateEx between the space that may be between the date and range...
                 string[] dateAndRange = Regex.Split(DateEx, @"\s");
 
-                string[] pattern = {"M-d-yyyy", "M/d/yyyy"};
+                string[] pattern = { "M-d-yyyy", "M/d/yyyy", "M-d-yy", "M/d/yy" };
         
                 DateTime parsedDate;
 
