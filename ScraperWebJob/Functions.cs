@@ -9,6 +9,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using Microsoft.WindowsAzure.Storage;
 
 namespace WebJob
 {
@@ -25,14 +26,21 @@ namespace WebJob
         [NoAutomaticTrigger]
         public static void ScrapeAndStoreWODs([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            for (int i = 1; i < 3; i++)
+            //for (int i = 6; i < 10; i++)
+            //for (int i = 11; i < 15; i++)
+            for (int i = 16; i < 20; i++)
             {
-                string url = String.Format("http://www.crossfitorlando.com/category/wod/page/{0}/#/today", i.ToString());
+                string url = (i == 1)? "http://www.crossfitorlando.com/category/wod/#/today" : String.Format("http://www.crossfitorlando.com/category/wod/page/{0}/#/today", i.ToString());
+                
                 List<WOD> wods = ConvertArticlesToObjects(Scape(url));
 
                 wods.ForEach(delegate(WOD wod)
                 {
-                    Functions.Store(tableBinding, wod);
+                    // this one-off WOD creates a poison message.  need to read up on handling it: https://msdn.microsoft.com/en-us/library/ms789028%28v=vs.110%29.aspx
+                    if (wod.Title != "Saturday 2/7/15 Pre-class WU")
+                    {
+                        Functions.Store(tableBinding, wod);
+                    }
                 });
             }
         }
@@ -49,12 +57,24 @@ namespace WebJob
         static public void Store(ICollector<WOD> tableBinding, WOD wod)
         {
             string date = Regex.Match(wod.Title, @"\d+[-.\/]\d+[-.\/]\d+", RegexOptions.None).Value;
+            
+            // there was at least one occurance of title WOD not having a date...
+            if (date == "")
+                return;
+
             DateTime dt = Convert.ToDateTime(date);
 
             wod.PartitionKey = "year_" + dt.Year.ToString();
             wod.RowKey = "day_" + dt.DayOfYear.ToString();
 
-            tableBinding.Add(wod);
+            try
+            {
+                tableBinding.Add(wod);
+            }
+            catch (StorageException exception)
+            {
+                // swallow exception; this occurs when the entity already exists
+            }
         }
 
         static public WOD ConvertArticleToObject(HtmlNode article)
