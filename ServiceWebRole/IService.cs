@@ -13,6 +13,6 @@ namespace ServiceWebRole
     public interface IService
     {
         [OperationContract]
-        WOD GetWOD();
+        IEnumerable<WOD> GetWOD(string DateEx);
     }
 }
