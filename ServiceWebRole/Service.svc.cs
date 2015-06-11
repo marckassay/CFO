@@ -41,8 +41,7 @@ namespace ServiceWebRole
             }
             else if(DateEx == "*")
             {
-                // TODO: pick random DateTime that is in the WOD table
-                throw new NotImplementedException("Currently wildcard queries are not implemented yet.");
+                return QueryAndExecuteTable(GetRandomDay(), null);
             }
             else
             {
@@ -165,6 +164,15 @@ namespace ServiceWebRole
                 Partition = "year_" + date.Year,
                 Row = "day_" + date.DayOfYear
            };
+        }
+
+        private DateTime GetRandomDay()
+        {
+            DateTime start = new DateTime(2014, 12, 16);
+            Random gen = new Random();
+
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(gen.Next(range));
         }
     }
 }

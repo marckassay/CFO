@@ -29,10 +29,10 @@
         </PerformanceCounters>
       </DiagnosticMonitorConfiguration>
     </WadCfg>
-    <StorageAccount>devstoreaccount1</StorageAccount>
+    <StorageAccount>cfo</StorageAccount>
   </PublicConfig>
   <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
-    <StorageAccount name="devstoreaccount1" key="Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==" />
+    <StorageAccount name="cfo" key="g0YiEtkkDARQd5mLHo+vjBc1oaVtOSWTRpo8c9lVQ1g0zSjC6ZvtqOx2cUVM94f/KrrAjd3c78E1HRJWnSS8zA==" endpoint="https://core.windows.net" />
   </PrivateConfig>
   <IsEnabled>true</IsEnabled>
 </DiagnosticsConfiguration>
