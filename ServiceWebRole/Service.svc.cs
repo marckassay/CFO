@@ -30,7 +30,14 @@ namespace ServiceWebRole
         {
             if(DateEx == "")
             {
-                return QueryAndExecuteTable(DateTime.Today, null);
+                IEnumerable<WOD> today = QueryAndExecuteTable(DateTime.Today, null);
+
+                // see if DateTime.Today returns a WOD, if not return yesterday's WOD.
+                if (today.First().Title != "There was no WOD for this day.")
+                    return today;
+                
+                //...returns yesterday's WOD...
+                return QueryAndExecuteTable(DateTime.Today.AddDays(-1), null);
             }
             else if(DateEx == "*")
             {
@@ -85,10 +92,10 @@ namespace ServiceWebRole
                 string partitionFilter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, key.Partition);
                 string rowFilter = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, key.Row);
 
-                // Construct the query operation for all WOD entities where PartitionKey="year_2015".
+                // Construct the query operation to retrieve a WOD entity matching partition and row key...
                 TableQuery<WOD> query = new TableQuery<WOD>().Where(
                     TableQuery.CombineFilters(partitionFilter, TableOperators.And, rowFilter)
-                 );
+                    );
 
                 try
                 {

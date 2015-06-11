@@ -26,8 +26,6 @@ namespace WebJob
         [NoAutomaticTrigger]
         public static void ScrapeAndStoreWODs([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            //for (int i = 6; i < 10; i++)
-            //for (int i = 11; i < 15; i++)
             for (int i = 16; i < 20; i++)
             {
                 string url = (i == 1)? "http://www.crossfitorlando.com/category/wod/#/today" : String.Format("http://www.crossfitorlando.com/category/wod/page/{0}/#/today", i.ToString());
@@ -71,7 +69,7 @@ namespace WebJob
             {
                 tableBinding.Add(wod);
             }
-            catch (StorageException exception)
+            catch (StorageException)
             {
                 // swallow exception; this occurs when the entity already exists
             }
@@ -107,7 +105,7 @@ namespace WebJob
                return HttpUtility.HtmlDecode(body).Trim().Replace("Part ", "\nPart ");
             }
             // if this is caught, then at least return something useful...
-            catch(Exception e)
+            catch(Exception)
             {
                 return body;
             }
