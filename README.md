@@ -1,5 +1,10 @@
 # CFOService
 This is a Microsoft Azure solution that scrapes data daily from crossfitorlando.com.  The data stored are WODs (Workout Of the Day).  With this solution active on Azure, clients can query cloud service to retrieve one WOD or multiple WODs.  The following is the service URL: http://cfo.cloudapp.net/Service.svc
+<<<<<<< HEAD
+=======
+
+Currently data is stored dating back to 12/15/2014.
+>>>>>>> 706a76c4eb510b1c3f32f3dca79bec6475b3da59
 
 Currently data is stored dating back to 12/15/2014.
 
@@ -10,8 +15,13 @@ This is a PowerShell module that is acting as a client to query the cloud servic
 	(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/marckassay/CFO/master/CFOWOD/CFOWOD.ps1") | iex
 
 To install manually:
+<<<<<<< HEAD
 * Create a CFOWOD folder in your PowerShell module directory.  For an example: C:\Users\Marc\Documents\WindowsPowerShell\Modules\CFOWOD 
 * Download CFOWOD.psm1 into the CFOWOD folder: https://raw.githubusercontent.com/marckassay/CFO/master/CFOWOD/CFOWOD.psm1
+=======
+	- Create a CFOWOD folder in your PowerShell module directory.  For an example: C:\Users\Marc\Documents\WindowsPowerShell\Modules\CFOWOD 
+	- Download CFOWOD.psm1 into the CFOWOD folder: https://raw.githubusercontent.com/marckassay/CFO/master/CFOWOD/CFOWOD.psm1
+>>>>>>> 706a76c4eb510b1c3f32f3dca79bec6475b3da59
 
 ## CloudService
 This project is the Azure cloud service that hosts ServiceWebRole.
