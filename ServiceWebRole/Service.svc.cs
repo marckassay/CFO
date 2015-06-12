@@ -10,6 +10,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Storage.RetryPolicies;
 using WebJob;
 
 namespace ServiceWebRole
@@ -33,7 +34,7 @@ namespace ServiceWebRole
                 IEnumerable<WOD> today = QueryAndExecuteTable(DateTime.Today, null);
 
                 // see if DateTime.Today returns a WOD, if not return yesterday's WOD.
-                if (today.First().Title != "There was no WOD for this day.")
+                if (today.First().IsEmpty == false)
                     return today;
                 
                 //...returns yesterday's WOD...
@@ -41,7 +42,21 @@ namespace ServiceWebRole
             }
             else if(DateEx == "*")
             {
-                return QueryAndExecuteTable(GetRandomDay(), null);
+                IEnumerable<WOD> random = null;
+
+                sbyte attempts = 1;
+
+                while (attempts < 11)
+                {
+                    random = QueryAndExecuteTable(GetRandomDay(), null);
+
+                    if ((random.First().IsEmpty == false) || (attempts == 10))
+                        break;
+
+                    attempts++;
+                }
+
+                return random;
             }
             else
             {
@@ -106,7 +121,8 @@ namespace ServiceWebRole
                     results.Add(new WOD()
                     {
                         // TODO: convert key.Row to Date so that it can be used in the following title...
-                        Title = "There was no WOD for this day."
+                        Title = "There was no WOD for this day.",
+                        IsEmpty = true
                     });
                 }
                 

@@ -9,8 +9,16 @@ namespace WebJob
 {
     public class WOD : TableEntity
     {
-        public string Title { get; set; }
+        public WOD()
+        {
+            IsEmpty = false;
+        }
 
+        public string Title { get; set; }
+        
         public string Body { get; set; }
+
+        [IgnoreProperty]
+        public bool IsEmpty { get; set; }
     }
 }
