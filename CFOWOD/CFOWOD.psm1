@@ -15,11 +15,18 @@ function Get-WOD
         #$proxy = New-WebServiceProxy -Uri http://localhost:56159/Service.svc?wsdl
         
         $response = $proxy.GetWOD($DateEx)
-
-        Write-Host $response.Title
-        Write-Host "----------------"
-        Write-Host $response.Body
-		Write-Host ""
+        
+        ForEach ($element in $response) 
+        {
+            if($element.IsEmpty -ne "false")
+            {
+                Write-Host $element.Title -Foreground Green
+                Write-Host "----------------" -Foreground Green
+                Write-Host $element.Body 
+                Write-Host ""
+                Write-Host ""
+            }
+        }
     }
 
     end {
