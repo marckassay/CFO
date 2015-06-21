@@ -13,6 +13,13 @@ To install manually:
 * Create a CFOWOD folder in your PowerShell module directory.  For an example: C:\Users\Marc\Documents\WindowsPowerShell\Modules\CFOWOD 
 * Download CFOWOD.psm1 into the CFOWOD folder: https://raw.githubusercontent.com/marckassay/CFO/master/CFOWOD/CFOWOD.psm1
 
+Usage:
+	PS> Get-WOD
+	PS> Get-WOD "4/25/15"
+	PS> Get-WOD "4/25/15 -2"
+	PS> Get-WOD "4/13/15 +2"
+	PS> Get-WOD "*"
+
 ## CloudService
 This project is the Azure cloud service that hosts ServiceWebRole.
 
