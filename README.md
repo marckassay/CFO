@@ -15,14 +15,12 @@ To install manually:
 
 Usage:
 
-	```
 	PS> Get-WOD
 	PS> Get-WOD "4/25/15"
 	PS> Get-WOD "4/25/15 -2"
 	PS> Get-WOD "4/13/15 +2"
 	PS> Get-WOD "*"
-	```
-
+	
 ## CloudService
 This project is the Azure cloud service that hosts ServiceWebRole.
 
