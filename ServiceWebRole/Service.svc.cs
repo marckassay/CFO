@@ -115,7 +115,7 @@ namespace ServiceWebRole
                 {
                     results.Add(table.ExecuteQuery(query).First<WOD>());  
                 }
-                catch (InvalidOperationException exception)
+                catch (InvalidOperationException)
                 {
 
                     results.Add(new WOD()

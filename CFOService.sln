@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "CFOWOD", "CFOWOD\CFOWOD.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
 EndProject
@@ -10,6 +10,23 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceWebRole", "ServiceWebRole\ServiceWebRole.csproj", "{83DCBF23-8C05-456B-A637-A451BC5F44C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperWebJob", "ScraperWebJob\ScraperWebJob.csproj", "{07C2B61C-6C1F-4B8C-B7B2-63EE818D8AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{791D87C1-1858-41AB-9037-DD04A1F2A05E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Tests", "WebApplication.Tests\WebApplication.Tests.csproj", "{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{26D00229-E411-4EBF-8824-56A2929C91D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{AC51D869-DD69-4235-9A6B-E7D2B8308E1C}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{F16C9480-C402-4186-B237-1D2605914540}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\WebApplication.json = PublishScripts\Templates\WebApplication.json
+		PublishScripts\Templates\WebApplication.param.dev.json = PublishScripts\Templates\WebApplication.param.dev.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +50,20 @@ Global
 		{07C2B61C-6C1F-4B8C-B7B2-63EE818D8AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C2B61C-6C1F-4B8C-B7B2-63EE818D8AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C2B61C-6C1F-4B8C-B7B2-63EE818D8AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{791D87C1-1858-41AB-9037-DD04A1F2A05E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{791D87C1-1858-41AB-9037-DD04A1F2A05E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{791D87C1-1858-41AB-9037-DD04A1F2A05E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{791D87C1-1858-41AB-9037-DD04A1F2A05E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC51D869-DD69-4235-9A6B-E7D2B8308E1C} = {26D00229-E411-4EBF-8824-56A2929C91D1}
+		{F16C9480-C402-4186-B237-1D2605914540} = {26D00229-E411-4EBF-8824-56A2929C91D1}
 	EndGlobalSection
 EndGlobal
