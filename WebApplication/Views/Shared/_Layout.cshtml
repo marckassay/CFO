@@ -8,17 +8,19 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
+<body ng-app="ui.bootstrap">
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>an ASP.NET MVC application</p>
+            <p>a ASP.NET MVC application</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularui")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

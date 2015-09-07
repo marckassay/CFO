@@ -23,6 +23,11 @@ namespace WebApplication
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularui").Include(
+                      "~/Scripts/angular.js",
+                      "~/Scripts/angular-ui/ui-bootstrap.js",
+                      "~/Scripts/Site/datepicker.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
