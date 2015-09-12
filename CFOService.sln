@@ -12,6 +12,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScraperWebJob", "ScraperWebJob\ScraperWebJob.csproj", "{07C2B61C-6C1F-4B8C-B7B2-63EE818D8AF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{791D87C1-1858-41AB-9037-DD04A1F2A05E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83DCBF23-8C05-456B-A637-A451BC5F44C1} = {83DCBF23-8C05-456B-A637-A451BC5F44C1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Tests", "WebApplication.Tests\WebApplication.Tests.csproj", "{75A54B9B-4C8F-40FF-B923-57BB72CE6ACB}"
 EndProject

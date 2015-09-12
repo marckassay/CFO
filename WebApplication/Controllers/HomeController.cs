@@ -8,21 +8,25 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private ServiceWebRoleReference.ServiceClient service;
+
+        public HomeController()
+        {
+            service = new ServiceWebRoleReference.ServiceClient();
+        }
+
         public ActionResult Index()
         {
+            ServiceWebRoleReference.WOD[] wod = service.GetWOD("");
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            //ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
