@@ -137,7 +137,8 @@ namespace ServiceWebRole
             string[] accountAndName = Regex.Split(tableUri, @"\.");
 
             // Retrieve the storage account from the connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting(accountAndName[0]));
+            string xxx = CloudConfigurationManager.GetSetting(accountAndName[0]);
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(xxx);
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -178,7 +179,7 @@ namespace ServiceWebRole
            return new Keys()
            {
                 Partition = "year_" + date.Year,
-                Row = "day_" + date.DayOfYear
+                Row =  date.DayOfYear
            };
         }
 
@@ -196,5 +197,5 @@ namespace ServiceWebRole
 class Keys
 {
     public string Partition { get; set; }
-    public string Row { get; set; }
+    public int Row { get; set; }
 }

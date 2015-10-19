@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Profiles" />
     <Folder Include="ServiceWebRoleContent\" />
+    <Folder Include="WebApplicationContent\" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="ServiceWebRoleContent\diagnostics.wadcfgx" />

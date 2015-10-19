@@ -26,17 +26,34 @@ namespace WebJob
         [NoAutomaticTrigger]
         public static void ScrapeAndStoreWODs([Table("WOD")] ICollector<WOD> tableBinding)
         {
-            for (int i = 16; i < 20; i++)
-            {
+           for (int i = 1; i < 30; i++)
+           {
                 string url = (i == 1)? "http://www.crossfitorlando.com/category/wod/#/today" : String.Format("http://www.crossfitorlando.com/category/wod/page/{0}/#/today", i.ToString());
                 
                 List<WOD> wods = ConvertArticlesToObjects(Scape(url));
 
                 wods.ForEach(delegate(WOD wod)
                 {
-                    // this one-off WOD creates a poison message.  need to read up on handling it: https://msdn.microsoft.com/en-us/library/ms789028%28v=vs.110%29.aspx
-                    if (wod.Title != "Saturday 2/7/15 Pre-class WU")
+                    // one-offs WOD creates a poison message.  need to read up on handling it: https://msdn.microsoft.com/en-us/library/ms789028%28v=vs.110%29.aspx
+                    if(wod.Title == "Friday 7/23/15")
                     {
+                        wod.Title = "Friday 7/24/15";
+                        Console.WriteLine(wod.Title);
+                        Functions.Store(tableBinding, wod);
+                    }
+                    else if (wod.Title == "Tuesday 7/13/15")
+                    {
+                        wod.Title = "Tuesday 7/14/15";
+                        Console.WriteLine(wod.Title);
+                        Functions.Store(tableBinding, wod);
+                    }
+                    else if (wod.Title == "Thursday 3/12/15")
+                    {
+                        Console.WriteLine("***"+wod.Title);
+                    }
+                    else if (wod.Title != "Saturday 2/7/15 Pre-class WU")
+                    {
+                        Console.WriteLine(wod.Title);
                         Functions.Store(tableBinding, wod);
                     }
                 });
@@ -55,7 +72,7 @@ namespace WebJob
         static public void Store(ICollector<WOD> tableBinding, WOD wod)
         {
             string date = Regex.Match(wod.Title, @"\d+[-.\/]\d+[-.\/]\d+", RegexOptions.None).Value;
-            
+
             // there was at least one occurance of title WOD not having a date...
             if (date == "")
                 return;
@@ -63,14 +80,16 @@ namespace WebJob
             DateTime dt = Convert.ToDateTime(date);
 
             wod.PartitionKey = "year_" + dt.Year.ToString();
-            wod.RowKey = "day_" + dt.DayOfYear.ToString();
+            wod.RowKey = dt.DayOfYear.ToString();
 
             try
             {
                 tableBinding.Add(wod);
             }
-            catch (StorageException)
+            catch (StorageException e)
             {
+                Console.WriteLine(e.Message);
+               
                 // swallow exception; this occurs when the entity already exists
             }
         }

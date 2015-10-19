@@ -17,18 +17,23 @@ namespace WebApplication.Controllers
 
         public ActionResult Index()
         {
-            ServiceWebRoleReference.WOD[] wod = service.GetWOD("");
+            ServiceWebRoleReference.WOD wod = GetWOD()[0];
 
             return View();
         }
-
-        public ActionResult About()
+        
+        public ActionResult QueryServiceWebRole(string DateEx = "")
         {
             //ViewBag.Message = "Your application description page.";
 
-
+            ServiceWebRoleReference.WOD[] wod = GetWOD(DateEx);
 
             return View();
+        }
+        
+        private ServiceWebRoleReference.WOD[] GetWOD(string DateEx = "")
+        {
+            return service.GetWOD(DateEx);
         }
     }
 }
