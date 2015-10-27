@@ -104,7 +104,7 @@ namespace ServiceWebRole
             {
                 // TODO: need to query using GenerateFilterConditionForInt on the RowKey.  this will return mulitple Rows.
                 string partitionFilter = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, key.Partition);
-                string rowFilter = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, key.Row);
+                string rowFilter = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, key.Row.ToString());
 
                 // Construct the query operation to retrieve a WOD entity matching partition and row key...
                 TableQuery<WOD> query = new TableQuery<WOD>().Where(
@@ -137,8 +137,8 @@ namespace ServiceWebRole
             string[] accountAndName = Regex.Split(tableUri, @"\.");
 
             // Retrieve the storage account from the connection string.
-            string xxx = CloudConfigurationManager.GetSetting(accountAndName[0]);
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(xxx);
+            string account = CloudConfigurationManager.GetSetting(accountAndName[0]);
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(account);
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
