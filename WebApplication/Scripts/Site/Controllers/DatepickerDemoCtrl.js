@@ -1,4 +1,4 @@
-﻿var DatepickerDemoCtrl = function ($scope) {
+﻿var DatepickerDemoCtrl = function ($scope, $filter) {
     $scope.today = function () {
         $scope.dt = new Date();
     };
@@ -14,14 +14,20 @@
     };
 
     $scope.toggleMin = function () {
-        $scope.minDate = $scope.minDate ? null : new Date();
+        $scope.minDate = new Date(2014, 10, 29);
     };
     $scope.toggleMin();
-    $scope.maxDate = new Date(2020, 5, 22);
+
+    $scope.maxDate = new Date();
 
     $scope.open = function ($event) {
         $scope.status.opened = true;
     };
+    
+    $scope.$watch('dt', function () {
+        var dateEx = $filter('date')(new Date(), 'shortDate');
+        //dateEx
+    });
 
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -67,4 +73,4 @@
         return '';
     };
 };
-DatepickerDemoCtrl.$inject = ['$scope'];
+DatepickerDemoCtrl.$inject = ['$scope', '$filter'];
