@@ -35,7 +35,7 @@
             dataType: 'json',
             cache: false
         }).success(function (data, status, headers, config) {
-            $scope.wod = data[0].Title + "\n" + data[0].Body;
+            $scope.wod = data;
         });
         
     };

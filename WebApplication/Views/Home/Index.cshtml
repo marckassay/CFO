@@ -2,6 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    .panel-body  {
+        line-break:normal
+}
+</style>
+
 <div class="jumbotron">
     <h1>CFO&nbsp;</h1>
     <p class="lead">Workout Of the Day from crossfitorlando.com</p>
@@ -14,8 +20,13 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div style="min-height:267px;" class="panel panel-primary">
-            {{wod}} 
+        <div style="min-height:267px;" class="panel panel-default">
+            <div class="panel-heading">
+                {{wod[0].Title}}
+            </div>
+            <div class="panel-body">
+                {{wod[0].Body}}
+            </div>
         </div>
     </div>
 </div>
