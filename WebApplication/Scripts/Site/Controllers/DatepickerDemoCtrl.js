@@ -1,4 +1,4 @@
-﻿var DatepickerDemoCtrl = function ($scope, $filter) {
+﻿var DatepickerDemoCtrl = function ($scope, $filter, $http) {
     $scope.today = function () {
         $scope.dt = new Date();
     };
@@ -24,10 +24,21 @@
         $scope.status.opened = true;
     };
     
-    $scope.$watch('dt', function () {
-        var dateEx = $filter('date')(new Date(), 'shortDate');
-        //dateEx
-    });
+    $scope.changedate = function ($event) {
+        var dateEx = $filter('date')($scope.dt, 'shortDate');
+        console.log(dateEx);
+
+        $http({
+            method: 'GET',
+            url: '/Home/QueryServiceWebRole',
+            data: { DateEx: $filter('date')($scope.dt, 'shortDate') },
+            dataType: 'json',
+            cache: false
+        }).success(function (data, status, headers, config) {
+            $scope.wod = data[0].Title;
+        });
+        
+    };
 
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -73,4 +84,4 @@
         return '';
     };
 };
-DatepickerDemoCtrl.$inject = ['$scope', '$filter'];
+DatepickerDemoCtrl.$inject = ['$scope', '$filter', '$http'];

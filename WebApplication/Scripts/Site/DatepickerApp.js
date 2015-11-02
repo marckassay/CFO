@@ -4,8 +4,9 @@ DatepickerApp.controller('DatepickerDemoCtrl', DatepickerDemoCtrl);
 
 var configFunction = function ($routeProvider, $httpProvider) {
     $routeProvider.
-        when('/QueryServiceWebRole/:DateEx', {
-            templateUrl: function (params) { return '/homeController/QueryServiceWebRole?DateEx=' + params.DateEx; }
+        when('#/QueryServiceWebRole', {
+            template: ' ',
+            controller: 'HomeCtrl'
         });
 }
 configFunction.$inject = ['$routeProvider', '$httpProvider'];

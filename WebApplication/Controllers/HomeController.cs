@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,23 +19,24 @@ namespace WebApplication.Controllers
 
         public ActionResult Index()
         {
-            ServiceWebRoleReference.WOD wod = GetWOD()[0];
+           // ServiceWebRoleReference.WOD wod = GetWOD()[0];
 
             return View();
         }
         
-        public ActionResult QueryServiceWebRole(string DateEx = "")
+
+        public async Task<JsonResult> QueryServiceWebRole(string DateEx = "")
         {
             //ViewBag.Message = "Your application description page.";
 
-            ServiceWebRoleReference.WOD[] wod = GetWOD(DateEx);
+            ServiceWebRoleReference.WOD[] wod = await GetWOD(DateEx);
 
-            return View();
+            return Json(wod, JsonRequestBehavior.AllowGet);
         }
         
-        private ServiceWebRoleReference.WOD[] GetWOD(string DateEx = "")
+        private async Task<ServiceWebRoleReference.WOD[]> GetWOD(string DateEx = "")
         {
-            return service.GetWOD(DateEx);
+            return await service.GetWODAsync(DateEx);
         }
     }
 }
