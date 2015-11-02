@@ -31,11 +31,11 @@
         $http({
             method: 'GET',
             url: '/Home/QueryServiceWebRole',
-            data: { DateEx: $filter('date')($scope.dt, 'shortDate') },
+            params: { DateEx: dateEx },
             dataType: 'json',
             cache: false
         }).success(function (data, status, headers, config) {
-            $scope.wod = data[0].Title;
+            $scope.wod = data[0].Title + "\n" + data[0].Body;
         });
         
     };
