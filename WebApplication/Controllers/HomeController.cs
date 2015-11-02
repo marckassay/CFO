@@ -19,16 +19,11 @@ namespace WebApplication.Controllers
 
         public ActionResult Index()
         {
-           // ServiceWebRoleReference.WOD wod = GetWOD()[0];
-
             return View();
         }
         
-
         public async Task<JsonResult> QueryServiceWebRole(string DateEx = "")
         {
-            //ViewBag.Message = "Your application description page.";
-
             ServiceWebRoleReference.WOD[] wod = await GetWOD(DateEx);
 
             return Json(wod, JsonRequestBehavior.AllowGet);

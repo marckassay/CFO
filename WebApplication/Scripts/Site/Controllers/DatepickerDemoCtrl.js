@@ -37,8 +37,8 @@
         }).success(function (data, status, headers, config) {
             $scope.wod = data;
         });
-        
     };
+    $scope.changedate();
 
     $scope.dateOptions = {
         formatYear: 'yy',
