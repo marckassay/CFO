@@ -25,7 +25,7 @@ Usage:
 This project is the Azure cloud service that hosts ServiceWebRole.
 
 ## ScraperWebJob
-This WebJob project typically runs daily on Azure which scrapes the WOD web page on crossfitorlando.com.  This project uses HtmlAgility for scraping which will marshal the data into a WOD entity.  The entity is then stored into Azure Storage as a Table (NoSQL key-attribute data store). 
+This WebJob project typically runs daily on Azure which scrapes the WOD web page from crossfitorlando.com.  This project uses HtmlAgility for scraping which will then marshal the data into a WOD entity.  The entity is then stored into Azure Storage as a Table (NoSQL key-attribute data store). 
 
 ## ServiceWebRole
 This is the SOAP web service project on Azure.  Interface contains `GetWOD` method:
@@ -56,5 +56,5 @@ The `DateEx` (date expression) parameter can take the following expressions:
 	"*"
 	
 ## WebApplication
-This is web application is using ASP .NET MVC, Angular and Bootstrap.  The current IP address is the following: http://104.209.185.221:8080/
+This web application is using ASP .NET MVC, Angular and Bootstrap.  The current IP address is the following: http://104.209.185.221:8080/
  
