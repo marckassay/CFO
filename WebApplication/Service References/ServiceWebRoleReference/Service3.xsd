@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://cfo.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebJob" />
+  <xs:import schemaLocation="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WebJob" />
   <xs:element name="GetWOD">
     <xs:complexType>
       <xs:sequence>

@@ -57,15 +57,30 @@
   <ItemGroup>
     <Folder Include="Profiles" />
     <Folder Include="ServiceWebRoleContent\" />
+    <Folder Include="ServiceWebRoleContent\bin" />
     <Folder Include="WebApplicationContent\" />
+    <Folder Include="WebApplicationContent\bin" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="ServiceWebRoleContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="WebApplicationContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\cfoProduction.azurePubxml" />
-    <PublishProfile Include="Profiles\cfoStaging.azurePubxml" />
+    <Content Include="ServiceWebRoleContent\bin\install.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ServiceWebRoleContent\bin\NDP46-KB3045560-Web.exe">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="WebApplicationContent\bin\install.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="WebApplicationContent\bin\NDP46-KB3045560-Web.exe">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\cfocloudserviceProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

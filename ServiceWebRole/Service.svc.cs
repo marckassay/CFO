@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.WindowsAzure.Storage.RetryPolicies;
 using WebJob;
+using Microsoft.Azure;
 
 namespace ServiceWebRole
 {
@@ -92,7 +93,7 @@ namespace ServiceWebRole
 
         private IEnumerable<WOD> QueryAndExecuteTable(DateTime date, sbyte? range)
         {
-            CloudTable table = GetCloudTable("cfo.WOD");
+            CloudTable table = GetCloudTable("cfostorage.WOD");
             
             sbyte rangeDefined = (range.HasValue == false) ? sbyte.Parse("0") : range.Value;
 

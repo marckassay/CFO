@@ -1,9 +1,9 @@
 # CFOService
 This is a Microsoft Azure solution that scrapes data daily from crossfitorlando.com.  The data stored are WODs (Workout Of the Day).  With this solution active on Azure, clients can query cloud service to retrieve one WOD or multiple WODs.  The following is the service URL: http://cfo.cloudapp.net/Service.svc
 
-Currently data is stored dating back to 12/15/2014.
+Currently data is stored dating back to 11/29/2014.
 
-This solution consists of the following 4 projects:
+This solution consists of the following 5 projects:
 ## CFOWOD
 This is a PowerShell module that is acting as a client to query the cloud service.  To install automatically, run the following script (PowerShell must be relaxed with security):
 
@@ -54,3 +54,9 @@ The `DateEx` (date expression) parameter can take the following expressions:
 
 	// returns a random WOD object 
 	"*"
+	
+## WebApplication
+This is a web application using ASP .NET MVC, Angular and Bootstrap.  The current IP address is the following:
+	
+	http://104.209.185.221:8080/
+ 

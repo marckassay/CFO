@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="CloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
   <WebRole name="ServiceWebRole" vmsize="Small">
+    <LocalResources>
+      <LocalStorage name="InstallLogs" sizeInMB="5" cleanOnRoleRecycle="false" />
+    </LocalResources>
+    <Startup>
+      <Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="PathToInstallLogs">
+            <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='InstallLogs']/@path" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -10,7 +22,7 @@
     </Sites>
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
-      <Setting name="cfo" />
+      <Setting name="cfostorage" />
       <!--
       <Setting name="local" />
       -->
@@ -20,6 +32,18 @@
     </Endpoints>
   </WebRole>
   <WebRole name="WebApplication" vmsize="Small">
+    <LocalResources>
+      <LocalStorage name="InstallLogs" sizeInMB="5" cleanOnRoleRecycle="false" />
+    </LocalResources>
+    <Startup>
+      <Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
+        <Environment>
+          <Variable name="PathToInstallLogs">
+            <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='InstallLogs']/@path" />
+          </Variable>
+        </Environment>
+      </Task>
+    </Startup>
     <Sites>
       <Site name="Web">
         <Bindings>

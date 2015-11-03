@@ -19,16 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://cfo.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://cfocloudservice.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service5.xsd" MetadataType="Schema" ID="ba196a28-2eb1-42f0-8938-5a30ca7ced55" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?xsd=xsd4" />
-    <MetadataFile FileName="Service51.xsd" MetadataType="Schema" ID="bcb92e86-fcc1-4965-ab7e-ae5a3027a7d5" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?xsd=xsd3" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="e7b61468-5dda-42a7-944d-4d19d24c26de" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?wsdl" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="b45e24ba-44f1-4c66-adae-85f9da71cd51" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?disco" />
-    <MetadataFile FileName="Service52.xsd" MetadataType="Schema" ID="1757c891-a24c-4884-87be-b04adab24066" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service53.xsd" MetadataType="Schema" ID="27192026-d4b1-477c-9d43-3c68c63400f1" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service54.xsd" MetadataType="Schema" ID="52fb42cc-e411-412d-bf92-9f3cddeb6195" SourceId="1" SourceUrl="http://cfo.cloudapp.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="f46974d3-2db2-4229-a39b-790073061930" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="1755f7f3-b4eb-4fcf-89ba-d08c92ffac68" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?disco" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="6a469f15-6c08-4e7f-9882-20b9fa6e214c" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="fb2e76d7-b974-4077-bebd-00b0bdddae97" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="b87dcb4d-dbdc-40c9-ae63-d1ef5205a84e" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="08912e0b-ea6d-48fa-ac00-7079894754bc" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service4.xsd" MetadataType="Schema" ID="960aba79-0718-43f2-a28a-41ea470f5ff7" SourceId="1" SourceUrl="http://cfocloudservice.cloudapp.net/Service.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
