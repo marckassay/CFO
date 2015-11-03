@@ -1,5 +1,5 @@
 # CFOService
-This is a Microsoft Azure solution that scrapes data daily from crossfitorlando.com.  The data stored are WODs (Workout Of the Day).  With this solution active on Azure, clients can query cloud service to retrieve one WOD or multiple WODs.  The following is the service URL: http://cfo.cloudapp.net/Service.svc
+This is a Microsoft Azure solution that scrapes data daily from crossfitorlando.com.  The data stored are WODs (Workout Of the Day).  With this solution active on Azure, clients can query cloud service to retrieve one WOD or multiple WODs.  The following is the service URL: http://cfocloudservice.cloudapp.net/Service.svc
 
 Currently data is stored dating back to 11/29/2014.
 
