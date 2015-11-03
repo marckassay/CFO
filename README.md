@@ -56,7 +56,5 @@ The `DateEx` (date expression) parameter can take the following expressions:
 	"*"
 	
 ## WebApplication
-This is a web application using ASP .NET MVC, Angular and Bootstrap.  The current IP address is the following:
-	
-	http://104.209.185.221:8080/
+This is web application is using ASP .NET MVC, Angular and Bootstrap.  The current IP address is the following: http://104.209.185.221:8080/
  
