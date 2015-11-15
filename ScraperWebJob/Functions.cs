@@ -35,7 +35,13 @@ namespace WebJob
                 wods.ForEach(delegate(WOD wod)
                 {
                     // one-offs WOD creates a poison message.  need to read up on handling it: https://msdn.microsoft.com/en-us/library/ms789028%28v=vs.110%29.aspx
-                    if(wod.Title == "Friday 7/23/15")
+                    if (wod.Title == "Friday the 13th!")
+                    {
+                        wod.Title = "Friday 11/13/15";
+                        Console.WriteLine(wod.Title);
+                        Functions.Store(tableBinding, wod);
+                    }
+                    else if(wod.Title == "Friday 7/23/15")
                     {
                         wod.Title = "Friday 7/24/15";
                         Console.WriteLine(wod.Title);
